@@ -1,0 +1,14 @@
+# 测试环境
+
+server:
+  port: 8080
+
+#在配置文件中自定义变量
+cupSize: B
+age: 18
+content: 'cupSize: ${cupSize}, age: ${age}'
+
+#通过使用@ConfigurationProperties(prefix = "girl")设置的自定义分组变量
+girl:
+  cupSize: B
+  age: 17

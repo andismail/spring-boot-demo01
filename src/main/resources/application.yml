@@ -1,0 +1,16 @@
+#server:
+#  port: 8080
+#
+#cupSize: B
+#age: 18
+#content: 'cupSize: ${cupSize}, age: ${age}'
+#
+#girl:
+#  cupSize: F
+#  age: 19
+
+# 多环境配置
+# 可以指定配置文件启动:java -jar girl-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
+spring:
+  profiles:
+    active: prod

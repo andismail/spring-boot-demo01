@@ -10,6 +10,7 @@ public class GirlApplication {
     //启动方式二:mvn package 后 java -jar girl-0.0.1-SNAPSHOT.jar
     //启动方式三:mvn spring-boot:run
     //注意:后两种启动方式需确保运行环境的java版本
+    //每三种启动方式可以指定配置文件:java -jar girl-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
 	public static void main(String[] args) {
 		SpringApplication.run(GirlApplication.class, args);
 	}
