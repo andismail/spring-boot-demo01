@@ -11,6 +11,20 @@
 
 # 多环境配置
 # 可以指定配置文件启动:java -jar girl-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev
+
+##############################################################
+# 如果在这个配置文件中写东西的话,启动时在其它配置的环境下也都可以读的到 #
+##############################################################
+
 spring:
   profiles:
     active: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dbgirl
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
