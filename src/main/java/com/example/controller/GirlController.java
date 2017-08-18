@@ -4,8 +4,10 @@ import com.example.domain.Girl;
 import com.example.repository.GirlRepository;
 import com.example.service.GirlService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -66,4 +68,18 @@ public class GirlController {
     public void addTwo() {
         girlService.insertTwo();
     }
+
+    //@Valid 表示要校验的内容,好像都是些JPA中相关的东西
+    //入参数据绑定,在Spring MVC中好像是需要写入参用@RequestBody才能把其转成对象,此处不知为什么可以直接这么使用,
+    // 且请求的入参可以不和对应实体对应,入参数大于或小于实体属性都可以
+    @PostMapping("/girl/add/valid")
+    public Girl girlAddValid(@Valid Girl girl, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.getFieldError().getDefaultMessage());
+            return null;
+        }
+
+        return girlRepository.save(girl);
+    }
+
 }
