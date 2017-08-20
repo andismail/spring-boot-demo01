@@ -1,8 +1,10 @@
 package com.example.controller;
 
 import com.example.domain.Girl;
+import com.example.domain.Result;
 import com.example.repository.GirlRepository;
 import com.example.service.GirlService;
+import com.example.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -73,13 +75,18 @@ public class GirlController {
     //入参数据绑定,在Spring MVC中好像是需要写入参用@RequestBody才能把其转成对象,此处不知为什么可以直接这么使用,
     // 且请求的入参可以不和对应实体对应,入参数大于或小于实体属性都可以
     @PostMapping("/girl/add/valid")
-    public Girl girlAddValid(@Valid Girl girl, BindingResult bindingResult) {
+    public Result<Girl> girlAddValid(@Valid Girl girl, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             System.out.println(bindingResult.getFieldError().getDefaultMessage());
-            return null;
+            return ResultUtil.error(1, bindingResult.getFieldError().getDefaultMessage());
         }
 
-        return girlRepository.save(girl);
+        return ResultUtil.success(girlRepository.save(girl));
+    }
+
+    @GetMapping(value = "/girl/{id}/age")
+    public void getAge(@PathVariable Integer id) throws Exception {
+        girlService.getAge(id);
     }
 
 }

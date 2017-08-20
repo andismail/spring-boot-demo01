@@ -1,6 +1,8 @@
 package com.example.service;
 
 import com.example.domain.Girl;
+import com.example.enums.ResultEnum;
+import com.example.exception.GirlException;
 import com.example.repository.GirlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,4 +34,27 @@ public class GirlService {
         girlRepository.save(g2);
 
     }
+
+    public Girl getAge(Integer id) throws Exception {
+        Girl girl = girlRepository.findOne(id);
+        Integer age = girl.getAge();
+        if (age < 15) {
+            //throw new GirlException(100, "primary school");
+            throw new GirlException(ResultEnum.PRIMARY_SCHOOL);
+        }
+
+        if (age >= 15 && age < 19) {
+            //throw new GirlException(101, "middle school");
+            throw new GirlException(ResultEnum.MIDDLE_SCHOOL);
+        }
+
+        return girl;
+    }
+
+
+    public Girl findOne(Integer id) {
+        return girlRepository.findOne(id);
+    }
+
+
 }
