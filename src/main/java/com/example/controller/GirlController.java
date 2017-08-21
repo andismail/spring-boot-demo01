@@ -84,6 +84,7 @@ public class GirlController {
         return ResultUtil.success(girlRepository.save(girl));
     }
 
+    //此处再往出抛异常的话,会到@ControllerAdvice,格式化异常后,异常会显示到浏览器
     @GetMapping(value = "/girl/{id}/age")
     public void getAge(@PathVariable Integer id) throws Exception {
         girlService.getAge(id);

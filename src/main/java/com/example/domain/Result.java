@@ -1,6 +1,7 @@
 package com.example.domain;
 
 /**
+ * controller接口响应实体对象
  */
 public class Result<T> {
 

@@ -51,7 +51,7 @@ public class GirlService {
         return girl;
     }
 
-
+    //用来测试 单元测试
     public Girl findOne(Integer id) {
         return girlRepository.findOne(id);
     }

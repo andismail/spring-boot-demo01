@@ -12,6 +12,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 切面
+ * 此处知识点:
+ *  <code>@Aspect,@Pointcut,@Before,@After,@AfterReturning</code>
  * Created by Jthan on 17/8/19.
  */
 @Aspect

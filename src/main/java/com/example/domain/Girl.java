@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.Min;
 
 /**
+ * 实体对象,参数验证
  * Created by Jthan on 17/8/17.
  */
 @Entity
