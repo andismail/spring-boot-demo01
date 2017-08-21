@@ -12,11 +12,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by Jthan on 17/8/20.
  */
 @ControllerAdvice
-//好像是个什么controller作用未知
+/*
+控制器通知是任意带有@ControllerAdvice注解的类,这个类会包含一个或多个如下类型的方法:
+@ExceptionHandler注解标的方法;
+@InitBinder注解标的方法;
+@ModelAttribute注解标的方法.
+
+在带有@ControllerAdvice注解的类中,以上所述的这些方法会运用到整个应用程序所有控制器
+中带有@RequestMapping注解的方法上.
+ */
 public class ExceptionHandle {
 
-    //好像是出异常了会走到这个方法里,具体不知
-    @ExceptionHandler
+    @ExceptionHandler//异常处理方法
     @ResponseBody
     public Result handle(Exception e) {
         //出现的异常是GirlException时才处理
@@ -28,4 +35,8 @@ public class ExceptionHandle {
         }
         return ResultUtil.error(-1, "unknow error");
     }
+    /*
+    如果任意的控制器方法抛出Exception,不管这个方法位于哪个控制器中,都会调用这个方法来处理异常.
+    我们可以像编写@RequestMapping注解的方法那样来编写@ExceptionHandler注解的方法.
+     */
 }
